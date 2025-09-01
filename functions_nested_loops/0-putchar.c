@@ -1,15 +1,10 @@
-/**
- * File: 0-putchar.c
- * Auth: Omar Caguazango
- */
-
 #include "main.h"
-
 /**
  * main - Entry point
  *
- * Return: Always 0 (Success)
+ * Return: Always 0 (Sucess)
  */
+
 int main(void)
 {
 	_putchar('_');
