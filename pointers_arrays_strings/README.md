@@ -1,5 +1,5 @@
 
-# [C#28] SEIP - Part 1.-  C - Pointers, arrays and strings
+# [C#28] SEIP - Part 1.-  C - More pointers, arrays and strings
 
 Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
