@@ -1,11 +1,5 @@
 #include <stdio.h>
 
-/**
- * Add one line to this code, so that the program prints a[2] = 98
- * Author: Omar Caguazango
- *  
- * Return: 0
- */
 int main(void)
 {
   int n;
