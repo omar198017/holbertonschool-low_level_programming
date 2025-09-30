@@ -1,12 +1,11 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
  * is_digit - checks if a string contains only digits
  * @s: string to evaluate
  *
- * Return: 1 if true, 0 otherwise
+ * Return: 1 if all digits, 0 otherwise
  */
 int is_digit(char *s)
 {
@@ -35,44 +34,31 @@ int _strlen(char *s)
 }
 
 /**
- * errors - prints error and exits
+ * print_error - prints "Error" and exits with 98
  */
-void errors(void)
+void print_error(void)
 {
-	_putchar('E');
-	_putchar('r');
-	_putchar('r');
-	_putchar('o');
-	_putchar('r');
-	_putchar('\n');
+	char *err = "Error\n";
+
+	while (*err)
+		_putchar(*err++);
 	exit(98);
 }
 
 /**
- * main - multiplies two positive numbers
- * @argc: argument count
- * @argv: argument vector
- *
- * Return: 0 on success, 98 on failure
+ * multiply - multiplies two positive numbers
+ * @num1: first number string
+ * @num2: second number string
  */
-int main(int argc, char *argv[])
+void multiply(char *num1, char *num2)
 {
-	char *num1, *num2;
-	int len1, len2, i, j, carry, n1, n2, *result, total_len, start = 0;
+	int len1 = _strlen(num1), len2 = _strlen(num2);
+	int *result, total_len = len1 + len2;
+	int i, j, carry, n1, n2, start = 0;
 
-	if (argc != 3)
-		errors();
-
-	num1 = argv[1], num2 = argv[2];
-	if (!is_digit(num1) || !is_digit(num2))
-		errors();
-
-	len1 = _strlen(num1);
-	len2 = _strlen(num2);
-	total_len = len1 + len2;
 	result = calloc(total_len, sizeof(int));
 	if (!result)
-		errors();
+		print_error();
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
@@ -88,7 +74,6 @@ int main(int argc, char *argv[])
 		result[i + j + 1] += carry;
 	}
 
-	/* Skip leading zeros */
 	while (start < total_len && result[start] == 0)
 		start++;
 
@@ -101,5 +86,20 @@ int main(int argc, char *argv[])
 	}
 	_putchar('\n');
 	free(result);
+}
+
+/**
+ * main - validates input and calls multiplication
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: 0 on success, 98 on failure
+ */
+int main(int argc, char *argv[])
+{
+	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
+		print_error();
+
+	multiply(argv[1], argv[2]);
 	return (0);
 }
